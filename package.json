@@ -1,0 +1,59 @@
+{
+  "name": "gp-block-spacing",
+  "version": "1.0.0",
+  "description": "Add custom spacing components to gutenberg blocks.",
+  "author": "German Pichardo",
+  "license": "GPL-2.0-or-later",
+  "keywords": [
+    "wordpress",
+    "gutenberg",
+    "blocks"
+  ],
+  "browserslist": [
+    "last 40 versions"
+  ],
+  "homepage": "https://github.com/german-pichardo/gp-block-spacing",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/german-pichardo/gp-block-spacing"
+  },
+  "bugs": {
+    "url": "https://github.com/german-pichardo/gp-block-spacing/issues"
+  },
+  "main": "index.js",
+  "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
+    "@wordpress/editor": "^9.25.3",
+    "@wordpress/i18n": "^3.17.1",
+    "@wordpress/scripts": "^13.0.2",
+    "@wordpress/stylelint-config": "^19.0.1",
+    "browser-sync": "^2.26.7",
+    "browser-sync-webpack-plugin": "^2.2.2",
+    "classnames": "^2.2.6",
+    "moment": "^2.27.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "npm:wp-prettier@^2.0.5",
+    "stylelint-order": "4.1.0",
+    "toml": "^3.0.0"
+  },
+  "scripts": {
+    "build": "npm-run-all makepot build-assets",
+    "build-assets": "wp-scripts build",
+    "check-engines": "wp-scripts check-engines",
+    "check-licenses": "wp-scripts check-licenses",
+    "format:js": "wp-scripts format-js",
+    "lint:all": "npm run lint:style:fix && npm run format:js && npm run lint:php:fix",
+    "lint:style": "wp-scripts lint-style",
+    "lint:style:fix": "wp-scripts lint-style --fix",
+    "lint:js": "wp-scripts lint-js",
+    "lint:js:fix": "wp-scripts lint-js --fix",
+    "lint:php": "composer lint",
+    "lint:php:fix": "composer lint:fix",
+    "lint:pkg-json": "wp-scripts lint-pkg-json",
+    "packages-update": "wp-scripts packages-update",
+    "prettier:js": "prettier --write",
+    "start": "wp-scripts start",
+    "makepot": "wp i18n make-pot . languages/gp-block-spacing.pot --exclude=node_modules,vendor,build",
+    "postinstall": "wp-scripts build && composer install"
+  }
+}

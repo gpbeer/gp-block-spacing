@@ -1,0 +1,73 @@
+@import "~Shared/styles/common";
+
+/**
+ *   .has-margin-top--xs {}
+ *   .has-margin-top--xs-mobile {}
+ *   .has-margin-x--xl {}
+ */
+
+$mq-margin-breakpoints: (
+	//tablet:  $break-tablet,
+	mobile: $break-mobile
+);
+
+$margin-directions: (
+	"-top": "-top",
+	"-bottom": "-bottom",
+	"-right": "-right",
+	"-left": "-left",
+	"-y": "-top" "-bottom",
+	"-x": "-left" "-right",
+);
+
+$margin-properties: (
+	"margin": "margin",
+);
+
+$margin-sizes: (
+	"--xs": map-get($global-spacings, xs),
+	"--sm": map-get($global-spacings, sm),
+	"--md": map-get($global-spacings, md),
+	"--lg": map-get($global-spacings, lg),
+	"--xl": map-get($global-spacings, xl),
+	"--auto": auto,
+	"--none": 0
+);
+
+@mixin margins($margin-properties, $breakpoint: null) {
+
+	@each $property-namespace, $property in $margin-properties {
+
+		@each $direction-namespace, $direction-rules in $margin-directions {
+
+			@each $size-namespace, $size in $margin-sizes {
+				.has-#{$property-namespace}#{$direction-namespace}#{$size-namespace}#{$breakpoint} {
+
+					@each $direction in $direction-rules {
+						#{$property}#{$direction}: $size !important;
+					}
+				}
+			}
+		}
+	}
+}
+
+@include margins($margin-properties);
+
+/**
+* Automatically generate margin classes for each of our
+ * defined breakpoints, and give them a Responsive Suffix, e.g.:
+ *
+ * <div class="has-margin--xs-mobile">
+ */
+@if (variable-exists(mq-margin-breakpoints)) {
+
+	@each $bp-name, $bp-value in $mq-margin-breakpoints {
+		$breakpoint: break-#{$bp-name};
+
+		@include breakpoint("#{$bp-name}") {
+
+			@include margins($margin-properties, -#{$bp-name});
+		}
+	}
+}

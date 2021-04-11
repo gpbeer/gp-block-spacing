@@ -1,0 +1,165 @@
+/**
+ * External dependencies
+ */
+import {
+	identity,
+	isEqual,
+	isObject,
+	kebabCase,
+	mapValues,
+	pickBy,
+	get,
+	has,
+} from 'lodash';
+
+/**
+ * WordPress dependencies
+ */
+import { applyFilters } from '@wordpress/hooks';
+
+import { CLASS_ATTRIBUTE, STYLE_PROPERTY } from './index';
+
+/**
+ * Removed undefined values from nested object.
+ *
+ * @param {*} object
+ * @return {*} Object cleaned from undefined values
+ */
+export const cleanEmptyObject = ( object ) => {
+	if ( ! isObject( object ) ) {
+		return object;
+	}
+	const cleanedNestedObjects = pickBy(
+		mapValues( object, cleanEmptyObject ),
+		identity
+	);
+	return isEqual( cleanedNestedObjects, {} )
+		? undefined
+		: cleanedNestedObjects;
+};
+
+/**
+ * Check if given block is allowed.
+ *
+ * @param {string} blockName the block name.
+ * @return {boolean} true or false.
+ */
+export function isAllowedBlock( blockName ) {
+	const allowedBlocks = applyFilters( 'gp-block-spacing.allowed-blocks-padding', [
+		'core/buttons',
+		'core/button',
+		'core/cover',
+		'core/columns',
+		'core/column',
+		'core/file',
+		'core/group',
+		'core/heading',
+		'core/list',
+		'core/paragraph',
+		'core/pullquote',
+		'core/quote',
+		'core/separator',
+	] );
+
+	return allowedBlocks.includes( blockName );
+}
+
+/**
+ * Returns a class based on paddingName.
+ *
+ * @example .has-padding-top--xs-mobile {}
+ * @param {string} paddingSlug    Slug of the padding.
+ *
+ * @param {string} orientation top, right, bottom, left.
+ * @param {string} breakPoint tablet, mobile or desktop.
+ * @return {string} String with the class corresponding to the padding passed.
+ */
+export function getPaddingClass( paddingSlug, orientation, breakPoint ) {
+	if ( ! paddingSlug ) {
+		return;
+	}
+
+	if ( breakPoint ) {
+		return `has-padding-${ orientation }--${ kebabCase(
+			paddingSlug
+		) }-${ breakPoint }`;
+	}
+
+	return `has-padding-${ orientation }--${ kebabCase( paddingSlug ) }`;
+}
+
+/**
+ * For removing hole, and, falsy (null, undefined, 0, -0, NaN, "", false, document.all) values:
+ *
+ * @param {Array} array
+ * @return {*} The clean array
+ */
+export function removeNull( array ) {
+	return array.filter( ( x ) => x );
+}
+
+/**
+ * Returns the inline styles to add depending on the style object
+ *
+ * @param  {Object} styles Styles configuration
+ * @return {Object}        Flattened CSS variables declaration
+ */
+export function getInlineStyles( styles = {} ) {
+	const output = {};
+	Object.entries( STYLE_PROPERTY ).forEach(
+		( [ styleKey, ...otherObjectKeys ] ) => {
+			const [ objectKeys ] = otherObjectKeys;
+
+			if ( has( styles, objectKeys ) ) {
+				output[ styleKey ] = get( styles, objectKeys );
+			}
+		}
+	);
+
+	return output;
+}
+
+/**
+ * Padding classes
+ *
+ * @param  {Object} attributes The attributes
+ * @return {Array}  Css classes
+ */
+export function getPaddingClasses( attributes ) {
+	const output = [];
+
+	Object.entries( CLASS_ATTRIBUTE ).forEach(
+		( [ attribute, ...otherObjectKeys ] ) => {
+			const [ objectKeys ] = otherObjectKeys;
+			if ( has( attributes, attribute ) ) {
+				output.push(
+					getPaddingClass(
+						attributes[ attribute ],
+						objectKeys[ 0 ],
+						objectKeys[ 1 ]
+					)
+				);
+			}
+		}
+	);
+
+	return output;
+}
+
+/**
+ * Assign the paddingMobile attributes to blocks.
+ *
+ * @param  {Object} attributes The attributes
+ */
+export function setPaddingAttributes( attributes ) {
+	Object.entries( CLASS_ATTRIBUTE ).forEach( ( [ attribute ] ) => {
+		// Allow blocks to specify their own attribute definition with default values if needed.
+		if ( ! has( attributes, attribute ) ) {
+			return Object.assign( attributes, {
+				[ attribute ]: {
+					type: 'string',
+				},
+			} );
+		}
+	} );
+}

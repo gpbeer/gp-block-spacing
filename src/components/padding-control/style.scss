@@ -1,0 +1,72 @@
+@import "~Shared/styles/common";
+
+/**
+ *   .has-padding-top--xs {}
+ *   .has-padding-top--xs-mobile {}
+ *   .has-padding-x--xl {}
+ */
+
+$mq-padding-breakpoints: (
+	//tablet:  $break-tablet,
+	mobile: $break-mobile
+);
+
+$padding-directions: (
+	"-top": "-top",
+	"-bottom": "-bottom",
+	"-right": "-right",
+	"-left": "-left",
+	"-y": "-top" "-bottom",
+	"-x": "-left" "-right",
+);
+
+$padding-properties: (
+	"padding": "padding",
+);
+
+$padding-sizes: (
+	"--xs": map-get($global-spacings, xs),
+	"--sm": map-get($global-spacings, sm),
+	"--md": map-get($global-spacings, md),
+	"--lg": map-get($global-spacings, lg),
+	"--xl": map-get($global-spacings, xl),
+	"--none": 0
+);
+
+@mixin paddings($padding-properties, $breakpoint: null) {
+
+	@each $property-namespace, $property in $padding-properties {
+
+		@each $direction-namespace, $direction-rules in $padding-directions {
+
+			@each $size-namespace, $size in $padding-sizes {
+				.has-#{$property-namespace}#{$direction-namespace}#{$size-namespace}#{$breakpoint} {
+
+					@each $direction in $direction-rules {
+						#{$property}#{$direction}: $size !important;
+					}
+				}
+			}
+		}
+	}
+}
+
+@include paddings($padding-properties);
+
+/**
+* Automatically generate padding classes for each of our
+ * defined breakpoints, and give them a Responsive Suffix, e.g.:
+ *
+ * <div class="has-padding--xs-mobile">
+ */
+@if (variable-exists(mq-padding-breakpoints)) {
+
+	@each $bp-name, $bp-value in $mq-padding-breakpoints {
+		$breakpoint: break-#{$bp-name};
+
+		@include breakpoint("#{$bp-name}") {
+
+			@include paddings($padding-properties, -#{$bp-name});
+		}
+	}
+}
