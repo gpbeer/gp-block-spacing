@@ -1,16 +1,7 @@
 /**
  * External dependencies
  */
-import {
-	identity,
-	isEqual,
-	isObject,
-	kebabCase,
-	mapValues,
-	pickBy,
-	get,
-	has,
-} from 'lodash';
+import { kebabCase, get, has } from 'lodash';
 
 /**
  * WordPress dependencies
@@ -20,46 +11,30 @@ import { applyFilters } from '@wordpress/hooks';
 import { CLASS_ATTRIBUTE, STYLE_PROPERTY } from './index';
 
 /**
- * Removed undefined values from nested object.
- *
- * @param {*} object
- * @return {*} Object cleaned from undefined values
- */
-export const cleanEmptyObject = ( object ) => {
-	if ( ! isObject( object ) ) {
-		return object;
-	}
-	const cleanedNestedObjects = pickBy(
-		mapValues( object, cleanEmptyObject ),
-		identity
-	);
-	return isEqual( cleanedNestedObjects, {} )
-		? undefined
-		: cleanedNestedObjects;
-};
-
-/**
  * Check if given block is allowed.
  *
  * @param {string} blockName the block name.
  * @return {boolean} true or false.
  */
 export function isAllowedBlock( blockName ) {
-	const allowedBlocks = applyFilters( 'gp-block-spacing.allowed-blocks-padding', [
-		'core/buttons',
-		'core/button',
-		'core/cover',
-		'core/columns',
-		'core/column',
-		'core/file',
-		'core/group',
-		'core/heading',
-		'core/list',
-		'core/paragraph',
-		'core/pullquote',
-		'core/quote',
-		'core/separator',
-	] );
+	const allowedBlocks = applyFilters(
+		'gp-block-spacing.allowed-blocks-padding',
+		[
+			'core/buttons',
+			'core/button',
+			'core/cover',
+			'core/columns',
+			'core/column',
+			'core/file',
+			'core/group',
+			'core/heading',
+			'core/list',
+			'core/paragraph',
+			'core/pullquote',
+			'core/quote',
+			'core/separator',
+		]
+	);
 
 	return allowedBlocks.includes( blockName );
 }
@@ -86,16 +61,6 @@ export function getPaddingClass( paddingSlug, orientation, breakPoint ) {
 	}
 
 	return `has-padding-${ orientation }--${ kebabCase( paddingSlug ) }`;
-}
-
-/**
- * For removing hole, and, falsy (null, undefined, 0, -0, NaN, "", false, document.all) values:
- *
- * @param {Array} array
- * @return {*} The clean array
- */
-export function removeNull( array ) {
-	return array.filter( ( x ) => x );
 }
 
 /**

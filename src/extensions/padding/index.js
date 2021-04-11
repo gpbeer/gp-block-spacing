@@ -12,15 +12,13 @@ import TokenList from '@wordpress/token-list';
  * Internal dependencies
  */
 import icons from '../../utils/icons';
-
+import { removeNull } from '../../utils/helpers';
 import {
 	getInlineStyles,
 	getPaddingClasses,
 	isAllowedBlock,
-	removeNull,
 	setPaddingAttributes,
 } from './utils';
-
 import {
 	PaddingBottomEdit,
 	PaddingBottomMobileEdit,

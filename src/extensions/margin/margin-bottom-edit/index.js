@@ -1,7 +1,8 @@
 /**
  * Internal dependencies
  */
-import { cleanEmptyObject } from '../utils';
+import { cleanEmptyObject } from '../../../utils/helpers';
+
 import {
 	MarginOptionControl,
 	MarginMobileOptionControl,

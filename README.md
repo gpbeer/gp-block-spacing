@@ -49,29 +49,53 @@ composer require gp/gp-block-spacing
 
 ### Development wordpress coding helper
 https://make.wordpress.org/core/handbook/best-practices/coding-standards/
-https://wpvip.com/documentation/vip-go/code-review-blockers-warnings-notices/
 
-## Add Additional Fonts
+## Add Additional blocks to use custom padding
 
 ```JavaScript
 /**
- * Make additional custom fonts available
+ * Add custom padding to other blocks
+ * @todo Mobile version do not apply to dynamic blocks
+ * @param {Array} blocks Available blocks.
  *
- * @param {Array} fonts Available fonts.
- *
- * @return {Array} Filtered fonts array.
+ * @return {Array} Filtered blocks array.
  */
-function filterBlocksFonts( fonts ) {
+function filterBlocksPadding( blocks ) {
 
-	const customFonts = [
-        { value: 'SofiaProBold', label: 'SofiaProBold' },
-        { value: 'Noto Sans', label: 'Noto Sans' },
-    ];
+	const addBlocks = [
+                          			'my/my-block-1',
+                          			'my/my-block-2',
+                          		];
 
-    fonts = [ ...fonts, ...customFonts ];
+    blocks = [ ...blocks, ...addBlocks ];
 
-    return fonts;
+    return blocks;
 
 }
-wp.hooks.addFilter('gp.gp_block_spacing.fonts', 'gp/gp_block_spacing.fonts', filterBlocksFonts);
+wp.hooks.addFilter('gp-block-spacing.allowed-blocks-padding', 'my/block-padding', filterBlocksPadding);
+```
+
+## Add Additional blocks to use custom margin
+
+```JavaScript
+/**
+ * Add custom margin to other blocks
+ * @todo Mobile version do not apply to dynamic blocks
+ * @param {Array} blocks Available blocks.
+ *
+ * @return {Array} Filtered blocks array.
+ */
+function filterBlocksMargin( blocks ) {
+
+	const addBlocks = [
+                          			'my/my-block-1',
+                          			'my/my-block-2',
+                          		];
+
+    blocks = [ ...blocks, ...addBlocks ];
+
+    return blocks;
+
+}
+wp.hooks.addFilter('gp-block-spacing.allowed-blocks-margin', 'my/block-margin', filterBlocksMargin);
 ```

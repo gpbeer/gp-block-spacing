@@ -1,0 +1,35 @@
+# Copyright (C) 2021 German PICHARDO
+# This file is distributed under the same license as the GP Block Spacing plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: GP Block Spacing 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/gp-block-spacing\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2021-04-11T17:47:17+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.2.0\n"
+"X-Domain: gp-block-spacing\n"
+
+#. Plugin Name of the plugin
+msgid "GP Block Spacing"
+msgstr ""
+
+#. Description of the plugin
+msgid "Add custom spacing components to gutenberg blocks."
+msgstr ""
+
+#. Author of the plugin
+msgid "German PICHARDO"
+msgstr ""
+
+#: src/extensions/margin/index.js:148
+msgid "Margin"
+msgstr ""
+
+#: src/extensions/padding/index.js:148
+msgid "Padding"
+msgstr ""

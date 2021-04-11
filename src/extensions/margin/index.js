@@ -17,9 +17,10 @@ import {
 	getInlineStyles,
 	getMarginClasses,
 	isAllowedBlock,
-	removeNull,
 	setMarginAttributes,
 } from './utils';
+
+import { removeNull } from '../../utils/helpers';
 
 import { MarginBottomEdit, MarginBottomMobileEdit } from './margin-bottom-edit';
 import { MarginLeftEdit, MarginLeftMobileEdit } from './margin-left-edit';

@@ -1,37 +1,12 @@
 /**
  * WordPress dependencies
  */
-import { G, Path, SVG } from '@wordpress/components';
-import theme from './theme';
+import { Path, SVG } from '@wordpress/components';
 
 /**
  * Custom icons
  */
 const icons = {};
-const color = theme.colors.primary;
-
-icons.logo = (
-	<SVG viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-		<Path
-			fill={ color }
-			d="M49.2,-43.1C64.6,-33.7,78.6,-16.9,81.6,3C84.6,22.9,76.6,45.8,61.2,61.6C45.8,77.5,22.9,86.4,3.7,82.7C-15.5,79,-30.9,62.7,-44.3,46.8C-57.7,30.9,-69,15.5,-72.6,-3.6C-76.2,-22.6,-72,-45.2,-58.6,-54.5C-45.2,-63.9,-22.6,-60.1,-2.9,-57.2C16.9,-54.4,33.7,-52.5,49.2,-43.1Z"
-			transform="translate(100 100)"
-		/>
-	</SVG>
-);
-
-icons.paddingBottom = (
-	<SVG
-		xmlns="http://www.w3.org/2000/svg"
-		width="24"
-		height="24"
-		viewBox="0 0 1000 1000"
-	>
-		<G>
-			<Path d="M10,760.2h980v129.8c0,32.6-26.4,59-59,59H69c-32.6,0-59-26.4-59-59V760.2L10,760.2z M990,705.9v-596c0-32.6-26.4-59-59-59H69c-32.6,0-59,26.4-59,59v596H990L990,705.9z M17.7,114.2c0-32,26-58.1,58.1-58.1h848.5c32,0,58.1,26,58.1,58.1v586.6H17.7V114.2L17.7,114.2z" />
-		</G>
-	</SVG>
-);
 
 icons.mobile = (
 	<SVG
