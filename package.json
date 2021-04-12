@@ -54,7 +54,7 @@
     "packages-update": "wp-scripts packages-update",
     "prettier:js": "prettier --write",
     "start": "wp-scripts start",
-    "makepot": "wp i18n make-pot . languages/gp-block-spacing.pot --exclude=node_modules,vendor,build",
+    "makepot": "wp i18n make-pot . languages/gp-block-spacing.pot --domain=gp-block-spacing --package-name='GP Block Spacing' --exclude=node_modules,vendor",
     "postinstall": "wp-scripts build && composer install"
   }
 }

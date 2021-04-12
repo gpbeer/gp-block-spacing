@@ -1,4 +1,9 @@
 /**
+ * WordPress dependencies
+ */
+import { __ } from '@wordpress/i18n';
+
+/**
  * Internal dependencies
  */
 import { cleanEmptyObject } from '../../../utils/helpers';
@@ -6,7 +11,6 @@ import {
 	PaddingOptionControl,
 	PaddingMobileOptionControl,
 } from '../../../components/padding-control/';
-import { __ } from '@wordpress/i18n';
 
 /**
  * Inspector control panel containing the padding right related configuration
@@ -37,7 +41,7 @@ function PaddingRightEdit( props ) {
 
 	return (
 		<PaddingOptionControl
-			label={ __( 'Padding right' ) }
+			label={ __( 'Padding right', 'gp-block-spacing' ) }
 			value={ style?.padding?.paddingRight }
 			hasPaddingNone={ paddingRight !== undefined }
 			onChange={ onChange }
@@ -66,7 +70,7 @@ function PaddingRightMobileEdit( props ) {
 
 	return (
 		<PaddingMobileOptionControl
-			label={ __( 'Padding right' ) }
+			label={ __( 'Padding right', 'gp-block-spacing' ) }
 			value={ paddingRightMobile }
 			onChange={ onChange }
 		/>

@@ -2,11 +2,14 @@
  * Internal dependencies
  */
 import { cleanEmptyObject } from '../../../utils/helpers';
-
 import {
 	MarginOptionControl,
 	MarginMobileOptionControl,
 } from '../../../components/margin-control/';
+
+/**
+ * WordPress dependencies
+ */
 import { __ } from '@wordpress/i18n';
 
 /**
@@ -38,7 +41,7 @@ function MarginBottomEdit( props ) {
 
 	return (
 		<MarginOptionControl
-			label={ __( 'Margin bottom' ) }
+			label={ __( 'Margin bottom', 'gp-block-spacing' ) }
 			value={ style?.margin?.marginBottom }
 			hasMarginNone={ marginBottom !== undefined }
 			onChange={ onChange }
@@ -67,7 +70,7 @@ function MarginBottomMobileEdit( props ) {
 
 	return (
 		<MarginMobileOptionControl
-			label={ __( 'Margin bottom' ) }
+			label={ __( 'Margin bottom', 'gp-block-spacing' ) }
 			value={ marginBottomMobile }
 			onChange={ onChange }
 		/>

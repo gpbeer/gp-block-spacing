@@ -1,4 +1,9 @@
 /**
+ * WordPress dependencies
+ */
+import { __ } from '@wordpress/i18n';
+
+/**
  * Internal dependencies
  */
 import { cleanEmptyObject } from '../../../utils/helpers';
@@ -6,7 +11,6 @@ import {
 	PaddingOptionControl,
 	PaddingMobileOptionControl,
 } from '../../../components/padding-control/';
-import { __ } from '@wordpress/i18n';
 
 /**
  * Inspector control panel containing the padding left related configuration
@@ -37,7 +41,7 @@ function PaddingLeftEdit( props ) {
 
 	return (
 		<PaddingOptionControl
-			label={ __( 'Padding left' ) }
+			label={ __( 'Padding left', 'gp-block-spacing' ) }
 			value={ style?.padding?.paddingLeft }
 			hasPaddingNone={ paddingLeft !== undefined }
 			onChange={ onChange }
@@ -66,7 +70,7 @@ function PaddingLeftMobileEdit( props ) {
 
 	return (
 		<PaddingMobileOptionControl
-			label={ __( 'Padding left' ) }
+			label={ __( 'Padding left', 'gp-block-spacing' ) }
 			value={ paddingLeftMobile }
 			onChange={ onChange }
 		/>

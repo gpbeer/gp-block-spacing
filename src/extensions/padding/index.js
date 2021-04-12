@@ -1,14 +1,4 @@
 /**
- * WordPress dependencies
- */
-import { addFilter } from '@wordpress/hooks';
-import { createHigherOrderComponent } from '@wordpress/compose';
-import { PanelBody, TabPanel } from '@wordpress/components';
-import { InspectorControls } from '@wordpress/block-editor';
-import { __ } from '@wordpress/i18n';
-import TokenList from '@wordpress/token-list';
-
-/**
  * Internal dependencies
  */
 import icons from '../../utils/icons';
@@ -26,6 +16,16 @@ import {
 import { PaddingLeftEdit, PaddingLeftMobileEdit } from './padding-left-edit';
 import { PaddingRightEdit, PaddingRightMobileEdit } from './padding-right-edit';
 import { PaddingTopEdit, PaddingTopMobileEdit } from './padding-top-edit';
+
+/**
+ * WordPress dependencies
+ */
+import { addFilter } from '@wordpress/hooks';
+import { createHigherOrderComponent } from '@wordpress/compose';
+import { PanelBody, TabPanel } from '@wordpress/components';
+import { InspectorControls } from '@wordpress/block-editor';
+import { __ } from '@wordpress/i18n';
+import TokenList from '@wordpress/token-list';
 
 export const STYLE_PROPERTY = {
 	paddingBottom: [ 'padding', 'paddingBottom' ],

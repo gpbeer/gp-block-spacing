@@ -1,4 +1,9 @@
 /**
+ * Internal dependencies
+ */
+import { isPaddingDefined, MAX, MIN, PADDINGS, RESET_VALUE } from './utils';
+
+/**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
@@ -7,11 +12,6 @@ import {
 	SelectControl,
 	ToggleControl,
 } from '@wordpress/components';
-
-/**
- * Internal dependencies
- */
-import { isPaddingDefined, MAX, MIN, PADDINGS, RESET_VALUE } from './utils';
 
 /**
  * Styles dependencies
@@ -51,7 +51,7 @@ function PaddingOptionControl( {
 			/>
 
 			<ToggleControl
-				label={ __( 'None' ) }
+				label={ __( 'None', 'gp-block-spacing' ) }
 				checked={ !! hasPaddingNone }
 				onChange={ handleToggleOnChange }
 			/>

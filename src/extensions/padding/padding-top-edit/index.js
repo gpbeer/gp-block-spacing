@@ -1,5 +1,3 @@
-import { __ } from '@wordpress/i18n';
-
 /**
  * Internal dependencies
  */
@@ -8,6 +6,11 @@ import {
 	PaddingOptionControl,
 	PaddingMobileOptionControl,
 } from '../../../components/padding-control/';
+
+/**
+ * WordPress dependencies
+ */
+import { __ } from '@wordpress/i18n';
 
 /**
  * Inspector control panel containing the padding top related configuration
@@ -38,7 +41,7 @@ function PaddingTopEdit( props ) {
 
 	return (
 		<PaddingOptionControl
-			label={ __( 'Padding top' ) }
+			label={ __( 'Padding top', 'gp-block-spacing' ) }
 			value={ style?.padding?.paddingTop }
 			hasPaddingNone={ paddingTop !== undefined }
 			onChange={ onChange }
@@ -67,7 +70,7 @@ function PaddingTopMobileEdit( props ) {
 
 	return (
 		<PaddingMobileOptionControl
-			label={ __( 'Padding top' ) }
+			label={ __( 'Padding top', 'gp-block-spacing' ) }
 			value={ paddingTopMobile }
 			onChange={ onChange }
 		/>

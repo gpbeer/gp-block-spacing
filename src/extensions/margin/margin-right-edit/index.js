@@ -6,6 +6,10 @@ import {
 	MarginOptionControl,
 	MarginMobileOptionControl,
 } from '../../../components/margin-control/';
+
+/**
+ * WordPress dependencies
+ */
 import { __ } from '@wordpress/i18n';
 
 /**
@@ -37,7 +41,7 @@ function MarginRightEdit( props ) {
 
 	return (
 		<MarginOptionControl
-			label={ __( 'Margin right' ) }
+			label={ __( 'Margin right', 'gp-block-spacing' ) }
 			value={ style?.margin?.marginRight }
 			hasMarginNone={ marginRight !== undefined }
 			onChange={ onChange }
@@ -66,7 +70,7 @@ function MarginRightMobileEdit( props ) {
 
 	return (
 		<MarginMobileOptionControl
-			label={ __( 'Margin right' ) }
+			label={ __( 'Margin right', 'gp-block-spacing' ) }
 			value={ marginRightMobile }
 			onChange={ onChange }
 		/>

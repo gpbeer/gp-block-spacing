@@ -1,14 +1,4 @@
 /**
- * WordPress dependencies
- */
-import { addFilter } from '@wordpress/hooks';
-import { createHigherOrderComponent } from '@wordpress/compose';
-import { PanelBody, TabPanel } from '@wordpress/components';
-import { InspectorControls } from '@wordpress/block-editor';
-import { __ } from '@wordpress/i18n';
-import TokenList from '@wordpress/token-list';
-
-/**
  * Internal dependencies
  */
 import icons from '../../utils/icons';
@@ -19,13 +9,21 @@ import {
 	isAllowedBlock,
 	setMarginAttributes,
 } from './utils';
-
 import { removeNull } from '../../utils/helpers';
-
 import { MarginBottomEdit, MarginBottomMobileEdit } from './margin-bottom-edit';
 import { MarginLeftEdit, MarginLeftMobileEdit } from './margin-left-edit';
 import { MarginRightEdit, MarginRightMobileEdit } from './margin-right-edit';
 import { MarginTopEdit, MarginTopMobileEdit } from './margin-top-edit';
+
+/**
+ * WordPress dependencies
+ */
+import { addFilter } from '@wordpress/hooks';
+import { createHigherOrderComponent } from '@wordpress/compose';
+import { PanelBody, TabPanel } from '@wordpress/components';
+import { InspectorControls } from '@wordpress/block-editor';
+import { __ } from '@wordpress/i18n';
+import TokenList from '@wordpress/token-list';
 
 export const STYLE_PROPERTY = {
 	marginBottom: [ 'margin', 'marginBottom' ],

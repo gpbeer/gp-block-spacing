@@ -1,5 +1,3 @@
-import { __ } from '@wordpress/i18n';
-
 /**
  * Internal dependencies
  */
@@ -8,6 +6,11 @@ import {
 	MarginOptionControl,
 	MarginMobileOptionControl,
 } from '../../../components/margin-control/';
+
+/**
+ * WordPress dependencies
+ */
+import { __ } from '@wordpress/i18n';
 
 /**
  * Inspector control panel containing the margin top related configuration
@@ -38,7 +41,7 @@ function MarginTopEdit( props ) {
 
 	return (
 		<MarginOptionControl
-			label={ __( 'Margin top' ) }
+			label={ __( 'Margin top', 'gp-block-spacing' ) }
 			value={ style?.margin?.marginTop }
 			hasMarginNone={ marginTop !== undefined }
 			onChange={ onChange }
@@ -67,7 +70,7 @@ function MarginTopMobileEdit( props ) {
 
 	return (
 		<MarginMobileOptionControl
-			label={ __( 'Margin top' ) }
+			label={ __( 'Margin top', 'gp-block-spacing' ) }
 			value={ marginTopMobile }
 			onChange={ onChange }
 		/>

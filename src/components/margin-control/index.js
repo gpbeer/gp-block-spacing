@@ -1,4 +1,8 @@
-import './style.scss';
+/**
+ * Internal dependencies
+ */
+import { isMarginDefined, MIN, MAX, RESET_VALUE, MARGINS } from './utils';
+
 /**
  * WordPress dependencies
  */
@@ -10,9 +14,9 @@ import {
 } from '@wordpress/components';
 
 /**
- * Internal dependencies
+ * Styles dependencies
  */
-import { isMarginDefined, MIN, MAX, RESET_VALUE, MARGINS } from './utils';
+import './style.scss';
 
 function MarginOptionControl( {
 	value: currentValue,
@@ -47,7 +51,7 @@ function MarginOptionControl( {
 			/>
 
 			<ToggleControl
-				label={ __( 'None' ) }
+				label={ __( 'None', 'gp-block-spacing' ) }
 				checked={ !! hasMarginNone }
 				onChange={ handleToggleOnChange }
 			/>

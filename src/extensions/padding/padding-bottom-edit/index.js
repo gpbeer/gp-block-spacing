@@ -1,4 +1,9 @@
 /**
+ * WordPress dependencies
+ */
+import { __ } from '@wordpress/i18n';
+
+/**
  * Internal dependencies
  */
 import { cleanEmptyObject } from '../../../utils/helpers';
@@ -6,7 +11,6 @@ import {
 	PaddingOptionControl,
 	PaddingMobileOptionControl,
 } from '../../../components/padding-control/';
-import { __ } from '@wordpress/i18n';
 
 /**
  * Inspector control panel containing the padding bottom related configuration
@@ -37,7 +41,7 @@ function PaddingBottomEdit( props ) {
 
 	return (
 		<PaddingOptionControl
-			label={ __( 'Padding bottom' ) }
+			label={ __( 'Padding bottom', 'gp-block-spacing' ) }
 			value={ style?.padding?.paddingBottom }
 			hasPaddingNone={ paddingBottom !== undefined }
 			onChange={ onChange }
@@ -66,7 +70,7 @@ function PaddingBottomMobileEdit( props ) {
 
 	return (
 		<PaddingMobileOptionControl
-			label={ __( 'Padding bottom' ) }
+			label={ __( 'Padding bottom', 'gp-block-spacing' ) }
 			value={ paddingBottomMobile }
 			onChange={ onChange }
 		/>
