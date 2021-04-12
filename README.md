@@ -3,19 +3,24 @@
 Add custom spacing components to gutenberg blocks.
 
 ## Requirements
+
 * PHP 7.2 or higher
 * Wordpress version 5 or higher
 * Composer [Composer](https://getcomposer.org/doc/00-intro.md#downloading-the-composer-executable).
 * NodeJs with npm [Node.js](https://nodejs.org/).
 
 ## Development
+
 All the required npm and composer packages will be automatically installed after the command :
+
 * `npm install`
 
 ## PHP Code quality
+
 * `composer lint` to run coding standards checks.
 
 ### Front Installation
+
 To add the necessary packages run `npm install`. Here are the other list of npm scripts for testing.
 
 * `npm run build` : Transform your code to minified version optimized for production with best performance.
@@ -31,8 +36,10 @@ To add the necessary packages run `npm install`. Here are the other list of npm 
 * `npm run start` : Start compiling javascript and stylesheets according to the configurations. Automatically rebuild if you make changes to the code and you will see errors on console, if there are any.
 
 ### Install package using **`COMPOSER`**
+
 Add to your `composer.json`
-```
+
+```json-doc
 "repositories": [
    ...
     {
@@ -43,36 +50,38 @@ Add to your `composer.json`
 ```
 
 Install directly using the command line
+
 ```bash
 composer require gp/gp-block-spacing
 ```
 
 ### Development wordpress coding helper
-https://make.wordpress.org/core/handbook/best-practices/coding-standards/
+
+<https://make.wordpress.org/core/handbook/best-practices/coding-standards/>
 
 ## Add Additional blocks to use custom padding
 
 ```JavaScript
 /**
  * Add custom padding to other blocks
+ *
  * @todo Mobile version do not apply to dynamic blocks
  * @param {Array} blocks Available blocks.
  *
  * @return {Array} Filtered blocks array.
  */
 function filterBlocksPadding( blocks ) {
+	const addBlocks = [ 'my/my-block-1', 'my/my-block-2' ];
 
-	const addBlocks = [
-                          			'my/my-block-1',
-                          			'my/my-block-2',
-                          		];
+	blocks = [ ...blocks, ...addBlocks ];
 
-    blocks = [ ...blocks, ...addBlocks ];
-
-    return blocks;
-
+	return blocks;
 }
-wp.hooks.addFilter('gp-block-spacing.allowed-blocks-padding', 'my/block-padding', filterBlocksPadding);
+wp.hooks.addFilter(
+	'gp-block-spacing.allowed-blocks-padding',
+	'my/block-padding',
+	filterBlocksPadding
+);
 ```
 
 ## Add Additional blocks to use custom margin
@@ -80,22 +89,22 @@ wp.hooks.addFilter('gp-block-spacing.allowed-blocks-padding', 'my/block-padding'
 ```JavaScript
 /**
  * Add custom margin to other blocks
+ *
  * @todo Mobile version do not apply to dynamic blocks
  * @param {Array} blocks Available blocks.
  *
  * @return {Array} Filtered blocks array.
  */
 function filterBlocksMargin( blocks ) {
+	const addBlocks = [ 'my/my-block-1', 'my/my-block-2' ];
 
-	const addBlocks = [
-                          			'my/my-block-1',
-                          			'my/my-block-2',
-                          		];
+	blocks = [ ...blocks, ...addBlocks ];
 
-    blocks = [ ...blocks, ...addBlocks ];
-
-    return blocks;
-
+	return blocks;
 }
-wp.hooks.addFilter('gp-block-spacing.allowed-blocks-margin', 'my/block-margin', filterBlocksMargin);
+wp.hooks.addFilter(
+	'gp-block-spacing.allowed-blocks-margin',
+	'my/block-margin',
+	filterBlocksMargin
+);
 ```
