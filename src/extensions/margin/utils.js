@@ -43,10 +43,10 @@ export function isAllowedBlock( blockName ) {
  * Returns a class based on marginName.
  *
  * @example .has-margin-top--xs-mobile {}
- * @param {string} marginSlug    Slug of the margin.
+ * @param {string} marginSlug  Slug of the margin.
  *
  * @param {string} orientation top, right, bottom, left.
- * @param {string} breakPoint tablet, mobile or desktop.
+ * @param {string} breakPoint  tablet, mobile or desktop.
  * @return {string} String with the class corresponding to the margin passed.
  */
 export function getMarginClass( marginSlug, orientation, breakPoint ) {
@@ -66,7 +66,7 @@ export function getMarginClass( marginSlug, orientation, breakPoint ) {
 /**
  * Returns the inline styles to add depending on the style object
  *
- * @param  {Object} styles Styles configuration
+ * @param {Object} styles Styles configuration
  * @return {Object}        Flattened CSS variables declaration
  */
 export function getInlineStyles( styles = {} ) {
@@ -87,7 +87,7 @@ export function getInlineStyles( styles = {} ) {
 /**
  * Margin classes
  *
- * @param  {Object} attributes The attributes
+ * @param {Object} attributes The attributes
  * @return {Array}  Css classes
  */
 export function getMarginClasses( attributes ) {
@@ -114,7 +114,7 @@ export function getMarginClasses( attributes ) {
 /**
  * Assign the marginMobile attributes to blocks.
  *
- * @param  {Object} attributes The attributes
+ * @param {Object} attributes The attributes
  */
 export function setMarginAttributes( attributes ) {
 	Object.entries( CLASS_ATTRIBUTE ).forEach( ( [ attribute ] ) => {

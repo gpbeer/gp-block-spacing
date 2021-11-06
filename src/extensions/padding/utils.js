@@ -43,10 +43,10 @@ export function isAllowedBlock( blockName ) {
  * Returns a class based on paddingName.
  *
  * @example .has-padding-top--xs-mobile {}
- * @param {string} paddingSlug    Slug of the padding.
+ * @param {string} paddingSlug Slug of the padding.
  *
  * @param {string} orientation top, right, bottom, left.
- * @param {string} breakPoint tablet, mobile or desktop.
+ * @param {string} breakPoint  tablet, mobile or desktop.
  * @return {string} String with the class corresponding to the padding passed.
  */
 export function getPaddingClass( paddingSlug, orientation, breakPoint ) {
@@ -66,7 +66,7 @@ export function getPaddingClass( paddingSlug, orientation, breakPoint ) {
 /**
  * Returns the inline styles to add depending on the style object
  *
- * @param  {Object} styles Styles configuration
+ * @param {Object} styles Styles configuration
  * @return {Object}        Flattened CSS variables declaration
  */
 export function getInlineStyles( styles = {} ) {
@@ -87,7 +87,7 @@ export function getInlineStyles( styles = {} ) {
 /**
  * Padding classes
  *
- * @param  {Object} attributes The attributes
+ * @param {Object} attributes The attributes
  * @return {Array}  Css classes
  */
 export function getPaddingClasses( attributes ) {
@@ -114,7 +114,7 @@ export function getPaddingClasses( attributes ) {
 /**
  * Assign the paddingMobile attributes to blocks.
  *
- * @param  {Object} attributes The attributes
+ * @param {Object} attributes The attributes
  */
 export function setPaddingAttributes( attributes ) {
 	Object.entries( CLASS_ATTRIBUTE ).forEach( ( [ attribute ] ) => {

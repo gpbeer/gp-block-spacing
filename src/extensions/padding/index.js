@@ -48,7 +48,7 @@ export const CLASS_ATTRIBUTE = {
 /**
  * Filters registered block settings, extending attributes to include `style` attribute.
  *
- * @param  {Object} settings Original block settings
+ * @param {Object} settings Original block settings
  * @return {Object}          Filtered block settings
  */
 function addAttributes( settings ) {
@@ -73,9 +73,9 @@ function addAttributes( settings ) {
 /**
  * Override props assigned to save component to inject the CSS variables definition.
  *
- * @param  {Object} props      Additional props applied to save element
- * @param  {Object} blockType  Block type
- * @param  {Object} attributes Block attributes
+ * @param {Object} props      Additional props applied to save element
+ * @param {Object} blockType  Block type
+ * @param {Object} attributes Block attributes
  * @return {Object}            Filtered props applied to save element
  */
 export function addSaveProps( props, blockType, attributes ) {
@@ -108,7 +108,7 @@ export function addSaveProps( props, blockType, attributes ) {
  * Filters registered block settings to extand the block edit wrapper
  * to apply the desired styles and classnames properly.
  *
- * @param  {Object} settings Original block settings
+ * @param {Object} settings Original block settings
  * @return {Object}          Filtered block settings
  */
 export function addEditProps( settings ) {
@@ -133,7 +133,7 @@ export function addEditProps( settings ) {
  * Override the default edit UI to include new inspector controls for
  * all the custom styles configs.
  *
- * @param  {Function} BlockEdit Original component
+ * @param {Function} BlockEdit Original component
  * @return {Function}           Wrapped component
  */
 
