@@ -34,7 +34,7 @@ module.exports = {
 	resolve: {
 		alias: {
 			...defaultConfig.resolve.alias,
-			Shared: path.resolve( __dirname, 'src/shared/' ),
+			'@shared': path.resolve( __dirname, 'src/shared/' ),
 		},
 	},
 	optimization: {
