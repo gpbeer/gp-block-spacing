@@ -7,16 +7,20 @@ import { kebabCase, get, has } from 'lodash';
  * WordPress dependencies
  */
 import { applyFilters } from '@wordpress/hooks';
-
+import { hasBlockSupport } from '@wordpress/blocks';
 import { CLASS_ATTRIBUTE, STYLE_PROPERTY } from './index';
+
+export const MARGIN_SUPPORT_KEY = 'margin';
 
 /**
  * Check if given block is allowed.
  *
  * @param {string} blockName the block name.
+ * @param {Object} blockType the type object.
+ *
  * @return {boolean} true or false.
  */
-export function isAllowedBlock( blockName ) {
+export function isAllowedBlock( blockName, blockType = false ) {
 	const allowedBlocks = applyFilters(
 		'gp-block-spacing.allowed-blocks-margin',
 		[
@@ -36,7 +40,10 @@ export function isAllowedBlock( blockName ) {
 		]
 	);
 
-	return allowedBlocks.includes( blockName );
+	return (
+		allowedBlocks.includes( blockName ) ||
+		hasBlockSupport( blockType || blockName, MARGIN_SUPPORT_KEY )
+	);
 }
 
 /**
