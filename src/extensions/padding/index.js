@@ -52,7 +52,7 @@ export const CLASS_ATTRIBUTE = {
  * @return {Object}          Filtered block settings
  */
 function addAttributes( settings ) {
-	if ( ! isAllowedBlock( settings.name ) ) {
+	if ( ! isAllowedBlock( settings.name, settings ) ) {
 		return settings;
 	}
 
@@ -112,7 +112,7 @@ export function addSaveProps( props, blockType, attributes ) {
  * @return {Object}          Filtered block settings
  */
 export function addEditProps( settings ) {
-	if ( ! isAllowedBlock( settings.name ) ) {
+	if ( ! isAllowedBlock( settings.name, settings ) ) {
 		return settings;
 	}
 
