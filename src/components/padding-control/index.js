@@ -1,7 +1,13 @@
 /**
  * Internal dependencies
  */
-import { isPaddingDefined, MAX, MIN, PADDINGS, RESET_VALUE } from './utils';
+import {
+	isPaddingDefined,
+	MAX,
+	MIN,
+	PADDING_MOBILE_OPTIONS,
+	RESET_VALUE,
+} from './utils';
 
 /**
  * WordPress dependencies
@@ -67,7 +73,7 @@ function PaddingMobileOptionControl( {
 	// Default spacing.
 	const spacing = [ { value: '', label: 'Default' } ];
 
-	Object.entries( PADDINGS ).forEach( ( [ key, value ] ) => {
+	Object.entries( PADDING_MOBILE_OPTIONS ).forEach( ( [ key, value ] ) => {
 		spacing.push( { value: key, label: value } );
 	} );
 

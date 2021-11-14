@@ -108,3 +108,18 @@ wp.hooks.addFilter(
 	filterBlocksMargin
 );
 ```
+
+## Overwrite Options
+
+```JavaScript
+wp.hooks.addFilter(
+  'gp-block-spacing.margin-options',
+  'my/block-margin-options',
+  () => {
+    return {
+      xl: '5rem',
+    };
+  },
+  1
+);
+```

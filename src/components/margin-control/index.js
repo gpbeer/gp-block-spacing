@@ -1,7 +1,13 @@
 /**
  * Internal dependencies
  */
-import { isMarginDefined, MIN, MAX, RESET_VALUE, MARGINS } from './utils';
+import {
+	isMarginDefined,
+	MIN,
+	MAX,
+	RESET_VALUE,
+	MARGIN_MOBILE_OPTIONS,
+} from './utils';
 
 /**
  * WordPress dependencies
@@ -65,7 +71,7 @@ function MarginMobileOptionControl( { value: currentValue, onChange, label } ) {
 	// Default spacing.
 	const spacing = [ { value: '', label: 'Default' } ];
 
-	Object.entries( MARGINS ).forEach( ( [ key, value ] ) => {
+	Object.entries( MARGIN_MOBILE_OPTIONS ).forEach( ( [ key, value ] ) => {
 		spacing.push( { value: key, label: value } );
 	} );
 
