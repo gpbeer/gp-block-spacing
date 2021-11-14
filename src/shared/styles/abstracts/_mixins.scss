@@ -6,13 +6,6 @@
 	}
 }
 
-@mixin break-tablet-only() {
-
-	@media (min-width: #{ ($break-tablet) }) and (max-width: #{ ($break-desktop) }) {
-		@content;
-	}
-}
-
 @mixin break-desktop() {
 
 	@media (min-width: #{ ($break-desktop) }) {
