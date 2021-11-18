@@ -3,7 +3,7 @@ const defaultConfig = require( '@wordpress/scripts/config/webpack.config' );
 const BrowserSyncPlugin = require( 'browser-sync-webpack-plugin' );
 const path = require( 'path' );
 
-let localEnv = '';
+let localEnv;
 
 // Check if local.json exists
 try {
@@ -34,7 +34,7 @@ module.exports = {
 	resolve: {
 		alias: {
 			...defaultConfig.resolve.alias,
-			'@shared': path.resolve( __dirname, 'src/shared/' ),
+			'@styles': path.resolve( __dirname, 'src/styles/' ),
 		},
 	},
 	optimization: {

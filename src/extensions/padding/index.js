@@ -56,7 +56,6 @@ function addAttributes( settings ) {
 		return settings;
 	}
 
-	// Allow blocks to specify their own attribute definition with default values if needed.
 	if ( ! settings.attributes.style ) {
 		Object.assign( settings.attributes, {
 			style: {
