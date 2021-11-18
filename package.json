@@ -22,6 +22,7 @@
   },
   "main": "index.js",
   "devDependencies": {
+    "@wordpress/base-styles": "^4.0.3",
     "@wordpress/editor": "^12.0.1",
     "@wordpress/i18n": "^4.2.3",
     "@wordpress/scripts": "^19.0.0",

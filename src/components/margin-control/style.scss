@@ -5,11 +5,10 @@
  *   .has-margin-top--xs-mobile {}
  *   .has-margin-x--xl {}
  */
-
 $mq-margin-breakpoints: (
-	//tablet:  $break-tablet,
-	mobile: $break-mobile
-);
+	null,
+	mobile
+) !default;
 
 $margin-directions: (
 	"-top": "-top",
@@ -18,7 +17,7 @@ $margin-directions: (
 	"-left": "-left",
 	"-y": "-top" "-bottom",
 	"-x": "-left" "-right",
-);
+) !default;
 
 $margin-properties: (
 	"margin": "margin",
@@ -32,7 +31,7 @@ $margin-sizes: (
 	"--xl": map-get($global-spacings, xl),
 	"--auto": auto,
 	"--none": 0
-);
+) !default;
 
 @mixin margins($margin-properties, $breakpoint: null) {
 
@@ -52,7 +51,7 @@ $margin-sizes: (
 	}
 }
 
-@include margins($margin-properties);
+//@include margins($margin-properties);
 
 /**
 * Automatically generate margin classes for each of our
@@ -62,12 +61,18 @@ $margin-sizes: (
  */
 @if (variable-exists(mq-margin-breakpoints)) {
 
-	@each $bp-name, $bp-value in $mq-margin-breakpoints {
-		$breakpoint: break-#{$bp-name};
+	@each $bp-name in $mq-margin-breakpoints {
 
-		@include breakpoint("#{$bp-name}") {
+		@if $bp-name == null {
+			// @include margins($margin-properties);
+		}
 
-			@include margins($margin-properties, -#{$bp-name});
+		@else {
+
+			@include breakpoint("#{$bp-name}") {
+
+				@include margins($margin-properties, -#{$bp-name});
+			}
 		}
 	}
 }

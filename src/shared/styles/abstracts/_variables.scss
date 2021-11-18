@@ -1,7 +1,7 @@
 // Spacings variables
-$global-spacing:    15px;
-$global-spacing-x:  10px;
-$global-spacing-y:  $global-spacing;
+$global-spacing:    15px !default;
+$global-spacing-x:  10px !default;
+$global-spacing-y:  $global-spacing !default;
 
 // Spacing
 // 10px, 15px, 20px, 30px, 60px
@@ -11,4 +11,4 @@ $global-spacings: (
 	md: $global-spacing + 5,
 	lg: $global-spacing*2,
 	xl: $global-spacing*4
-);
+) !default;

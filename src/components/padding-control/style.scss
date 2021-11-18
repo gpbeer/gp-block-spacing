@@ -5,11 +5,10 @@
  *   .has-padding-top--xs-mobile {}
  *   .has-padding-x--xl {}
  */
-
 $mq-padding-breakpoints: (
-	//tablet:  $break-tablet,
-	mobile: $break-mobile
-);
+	null,
+	mobile
+) !default;
 
 $padding-directions: (
 	"-top": "-top",
@@ -18,7 +17,7 @@ $padding-directions: (
 	"-left": "-left",
 	"-y": "-top" "-bottom",
 	"-x": "-left" "-right",
-);
+) !default;
 
 $padding-properties: (
 	"padding": "padding",
@@ -31,7 +30,7 @@ $padding-sizes: (
 	"--lg": map-get($global-spacings, lg),
 	"--xl": map-get($global-spacings, xl),
 	"--none": 0
-);
+) !default;
 
 @mixin paddings($padding-properties, $breakpoint: null) {
 
@@ -51,7 +50,7 @@ $padding-sizes: (
 	}
 }
 
-@include paddings($padding-properties);
+//@include paddings($padding-properties);
 
 /**
 * Automatically generate padding classes for each of our
@@ -61,12 +60,18 @@ $padding-sizes: (
  */
 @if (variable-exists(mq-padding-breakpoints)) {
 
-	@each $bp-name, $bp-value in $mq-padding-breakpoints {
-		$breakpoint: break-#{$bp-name};
+	@each $bp-name in $mq-padding-breakpoints {
 
-		@include breakpoint("#{$bp-name}") {
+		@if $bp-name == null {
+			// @include paddings($padding-properties);
+		}
 
-			@include paddings($padding-properties, -#{$bp-name});
+		@else {
+
+			@include breakpoint("#{$bp-name}") {
+
+				@include paddings($padding-properties, -#{$bp-name});
+			}
 		}
 	}
 }
